@@ -79,9 +79,7 @@ const showDataTransfer = (reasonStr, dt) => {
 
 document.body.addEventListener('paste', evt => {
   let results = document.querySelector('#results');
-  results.appendChild(showDataTransfer("paste", evt.clipboardData));
-  results.appendChild(showDataTransfer("paste_after", evt.clipboardData));
-
+  results.insertBefore(showDataTransfer("paste", evt.clipboardData), results.firstChild);
 });
 
 
@@ -96,6 +94,5 @@ document.body.addEventListener('dragover', evt => {
 document.body.addEventListener('drop', evt => {
   evt.preventDefault();
   let results = document.querySelector('#results');
-  results.appendChild(showDataTransfer("drop", evt.dataTransfer));
-  results.appendChild(showDataTransfer("drop_after", evt.dataTransfer));
+  results.insertBefore(showDataTransfer("drop", evt.dataTransfer), results.firstChild);
 });
